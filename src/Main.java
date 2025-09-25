@@ -1,19 +1,18 @@
 public class Main {
     public static void main(String[] args) {
-        IDeveloperFactory factory;
 
-        String lang = "java";
+        IDeveloperAbstractFactory abstractFactory = new ConcreteDeveloperFactory();
+        IDeveloper javaDev = abstractFactory.createDeveloper("java");
+        IDeveloper cppDev = abstractFactory.createDeveloper("cpp");
 
-        if (lang.equals("java")) {
-            factory = new JavaDeveloperFactory();
-        } else if (lang.equals("cpp")) {
-            factory = new CppDeveloperFactory();
-        } else {
-            throw new RuntimeException("Unknown language: " + lang);
-        }
+        javaDev.writeCode();
+        cppDev.writeCode();
 
-        IDeveloper developer = factory.createDeveloper();
-        developer.writeCode();
+//        IDeveloperFactory factory = new JavaDeveloperFactory();
+//        IDeveloper dev1 = factory.createDeveloper();
+//        dev1.writeCode();
+
+
     }
 
 }
